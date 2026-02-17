@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RAG LLM UI</title>
+    <style>
+        body {
+            font-family: Arial;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        h2 {
+            margin-top: 40px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .answer-box {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<h1>RAG LLM Application</h1>
+
+<!-- PDF Upload Section -->
+<h2>Upload PDF</h2>
+<input type="file" id="pdfFile" />
+<br>
+<button onclick="uploadPDF()">Ingest PDF</button>
+<p id="uploadStatus"></p>
+
+<!-- Question Section -->
+<h2>Ask Question</h2>
+<textarea id="question" placeholder="Type your question here..."></textarea>
+<br>
+<button onclick="askQuestion()">Ask</button>
+
+<!-- Answer Section -->
+<h2>Answer</h2>
+<div class="answer-box" id="answer"></div>
+
+<script>
+async function uploadPDF() {
+    const fileInput = document.getElementById("pdfFile");
+    const file = fileInput.files[0];
+
+    if (!file) {
+        alert("Please select a PDF file.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch("http://localhost:8000/ingest", {
+        method: "POST",
+        body: formData
+    });
+
+    const data = await response.json();
+    document.getElementById("uploadStatus").innerText =
+        "PDF Ingested. Chunks created: " + data.chunks;
+}
+
+async function askQuestion() {
+    const question = document.getElementById("question").value;
+
+    const response = await fetch("http://localhost:8000/ask", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ question: question })
+    });
+
+    const data = await response.json();
+    document.getElementById("answer").innerText = data.answer;
+}
+</script>
+
+</body>
+</html>
