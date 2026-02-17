@@ -1,0 +1,18 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# Vector database (optional, recommended to ignore)
+vector_db/
+
+# OS junk
+.DS_Store
+
+# generated txt files
+retrieved_chunks.txt
