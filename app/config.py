@@ -8,7 +8,7 @@ load_dotenv()
 #     raise ValueError("OPENAI_API_KEY not set in environment")
 
 # MODEL_NAME = "gpt-4o-mini"
-MODEL_NAME = "google/flan-t5-base"
+MODEL_NAME = "google/flan-t5-small"
 
 CHUNK_SIZE = 700
 CHUNK_OVERLAP = 100
