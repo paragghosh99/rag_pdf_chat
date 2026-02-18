@@ -4,8 +4,13 @@ from app.ingestion import ingest_pdf
 from app.rag import answer_question
 import shutil
 import os
+from fastapi.responses import FileResponse
 
 app = FastAPI()
+
+@app.get("/")
+def serve_ui():
+    return FileResponse("index.html")
 
 from fastapi.middleware.cors import CORSMiddleware
 
