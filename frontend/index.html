@@ -68,7 +68,7 @@ async function uploadPDF() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const response = await fetch("http://localhost:8000/ingest", {
+    const response = await fetch("/ingest", {
         method: "POST",
         body: formData
     });
@@ -84,7 +84,7 @@ async function uploadPDF() {
 async function askQuestion() {
     const question = document.getElementById("question").value;
 
-    const response = await fetch("http://localhost:8000/ask", {
+    const response = await fetch("/ask", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
