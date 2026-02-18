@@ -16,3 +16,6 @@ vector_db/
 
 # generated txt files
 retrieved_chunks.txt
+
+# uploaded pdf directory
+uploaded_pdfs/
