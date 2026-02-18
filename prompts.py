@@ -1,7 +1,12 @@
 QA_PROMPT = """
-You are a helpful assistant.
-Answer the question ONLY using the context below.
-If the answer is not in the context, say "I don't know."
+You are a question-answering assistant.
+
+Use ONLY the provided context.
+If the answer is not explicitly present, respond:
+"Answer not found in the document."
+
+Provide a clear and complete definition in 2-4 sentences.
+Do not respond with a single word or abbreviation.
 
 Context:
 {context}
@@ -9,5 +14,5 @@ Context:
 Question:
 {question}
 
-Answer in complete sentences:
+Answer:
 """

@@ -10,8 +10,8 @@ def answer_question(question: str) -> str:
     
     #fetch_k is retrieving 10 docs where 4 are being filtered by mmr to prevent semantic redundancy
     retriever = vector_store.as_retriever(
-        search_type="mmr",
-        search_kwargs={"k": TOP_K, "fetch_k": 10}
+        search_type="similarity",
+        search_kwargs={"k": TOP_K}
         )
 
     docs = retriever.invoke(question)

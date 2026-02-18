@@ -1,10 +1,21 @@
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from vector_store import get_vector_store
-from config import CHUNK_SIZE, CHUNK_OVERLAP
+from config import CHUNK_SIZE, CHUNK_OVERLAP, PERSIST_DIR
+import shutil, os
 
 
 def ingest_pdf(pdf_path: str) -> int:
+    # Step 1: Get existing store and delete collection safely
+    vector_store = get_vector_store()
+    try:
+        vector_store.delete_collection()
+    except:
+        pass  # Ignore if it doesn't exist
+
+    # Step 2: Recreate fresh store
+    vector_store = get_vector_store()
+
     loader = PyPDFLoader(pdf_path)
     documents = loader.load()
 
@@ -15,8 +26,6 @@ def ingest_pdf(pdf_path: str) -> int:
 
     chunks = splitter.split_documents(documents)
 
-    vector_store = get_vector_store()
     vector_store.add_documents(chunks)
-    # vector_store.persist() -> only needed for OpenAiEmbeddings. HuggingFaceEmbeddings does it automatically
 
     return len(chunks)

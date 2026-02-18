@@ -40,7 +40,7 @@
 <h2>Upload PDF</h2>
 <input type="file" id="pdfFile" />
 <br>
-<button onclick="uploadPDF()">Ingest PDF</button>
+<button id="ingestBtn" onclick="uploadPDF()" disabled>Ingest PDF</button>
 <p id="uploadStatus"></p>
 
 <!-- Question Section -->
@@ -63,6 +63,8 @@ async function uploadPDF() {
         return;
     }
 
+    document.getElementById("uploadStatus").innerText = "Uploading and ingesting...";
+
     const formData = new FormData();
     formData.append("file", file);
 
@@ -72,8 +74,11 @@ async function uploadPDF() {
     });
 
     const data = await response.json();
+
     document.getElementById("uploadStatus").innerText =
-        "PDF Ingested. Chunks created: " + data.chunks;
+        "PDF successfully ingested. Chunks created: " + data.chunks;
+
+    document.getElementById("ingestBtn").disabled = true;
 }
 
 async function askQuestion() {
@@ -90,6 +95,19 @@ async function askQuestion() {
     const data = await response.json();
     document.getElementById("answer").innerText = data.answer;
 }
+
+document.getElementById("pdfFile").addEventListener("change", function () {
+    const ingestBtn = document.getElementById("ingestBtn");
+    const uploadStatus = document.getElementById("uploadStatus");
+
+    if (this.files.length > 0) {
+        ingestBtn.disabled = false;
+        uploadStatus.innerText = "PDF selected: " + this.files[0].name;
+    } else {
+        ingestBtn.disabled = true;
+        uploadStatus.innerText = "";
+    }
+});
 </script>
 
 </body>
