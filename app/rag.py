@@ -1,8 +1,8 @@
-from vector_store import get_vector_store
-from prompts import QA_PROMPT
-from llm import generate_answer
-from config import TOP_K
-from helper.clean_text import clean_text
+from app.vector_store import get_vector_store
+from app.prompts import QA_PROMPT
+from app.llm import generate_answer
+from app.config import TOP_K
+from app.helper.clean_text import clean_text
 
 
 def answer_question(question: str) -> str:

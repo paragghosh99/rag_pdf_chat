@@ -1,7 +1,7 @@
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from vector_store import get_vector_store
-from config import CHUNK_SIZE, CHUNK_OVERLAP, PERSIST_DIR
+from app.vector_store import get_vector_store
+from app.config import CHUNK_SIZE, CHUNK_OVERLAP, PERSIST_DIR
 import shutil, os
 
 

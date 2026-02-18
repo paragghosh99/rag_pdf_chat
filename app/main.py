@@ -1,7 +1,7 @@
 from fastapi import FastAPI, UploadFile, File
-from schemas import QuestionRequest
-from ingestion import ingest_pdf
-from rag import answer_question
+from app.schemas import QuestionRequest
+from app.ingestion import ingest_pdf
+from app.rag import answer_question
 import shutil
 import os
 

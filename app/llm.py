@@ -1,4 +1,4 @@
-from config import MODEL_NAME
+from app.config import MODEL_NAME
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)

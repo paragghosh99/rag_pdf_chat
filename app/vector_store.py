@@ -1,7 +1,7 @@
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 # from langchain_openai import OpenAIEmbeddings
 from langchain_huggingface import HuggingFaceEmbeddings
-from config import PERSIST_DIR
+from app.config import PERSIST_DIR
 
 
 def get_vector_store():
