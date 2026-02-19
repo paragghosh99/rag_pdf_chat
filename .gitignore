@@ -19,3 +19,6 @@ retrieved_chunks.txt
 
 # uploaded pdf directory
 uploaded_pdfs/
+
+# old files
+legacy_files

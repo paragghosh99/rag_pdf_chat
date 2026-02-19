@@ -1,4 +1,4 @@
-# tests/test_clean_text.py
+# tests/unit_tests/test_clean_text.py
 
 from app.helper.clean_text import clean_text
 

@@ -1,4 +1,4 @@
-# tests/test_prompt.py
+# tests/unit_tests/test_prompt.py
 
 from app.prompts import QA_PROMPT
 
