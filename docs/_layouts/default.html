@@ -95,7 +95,7 @@
 <body>
 
 {% if page.hero_image %}
-  <section class="hero" style="background-image: url('{{ page.hero_image }}');">
+  <section class="hero" style="background-image: url('{{ site.baseurl }}{{ page.hero_image }}');">
     <div class="hero-overlay">
       <h1>{{ page.hero_title }}</h1>
       <p class="hero-subtitle">{{ page.hero_subtitle }}</p>
