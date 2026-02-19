@@ -1,3 +1,4 @@
 title: RAG PDF Chat — From PDF to Answer
 theme: null
 markdown: kramdown
+baseurl: "/rag-pdf-chat"
