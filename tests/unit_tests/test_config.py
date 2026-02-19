@@ -1,4 +1,4 @@
-# tests/test_config.py
+# tests/unit_tests/test_config.py
 
 from app.config import CHUNK_SIZE, CHUNK_OVERLAP, TOP_K
 

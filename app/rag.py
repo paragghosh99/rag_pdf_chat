@@ -1,6 +1,6 @@
 from app.vector_store import get_vector_store
 from app.prompts import QA_PROMPT
-from app.llm import generate_answer
+from app.llm.factory import get_llm
 from app.config import TOP_K
 from app.helper.clean_text import clean_text
 
@@ -30,5 +30,8 @@ def answer_question(question: str) -> str:
         question=question
     )
 
-    answer = generate_answer(prompt)
+    # RAG → BaseLLM interface → factory → chosen backend
+    llm = get_llm()
+    answer = llm.generate(prompt)
+
     return answer

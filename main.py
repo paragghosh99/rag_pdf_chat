@@ -5,12 +5,15 @@ from app.rag import answer_question
 import shutil
 import os
 from fastapi.responses import FileResponse
+from app.config import BASE_DIR
+
+INDEX_FILE = BASE_DIR / "frontend" / "index.html"
 
 app = FastAPI()
 
 @app.get("/")
 def serve_ui():
-    return FileResponse("index.html")
+    return FileResponse(INDEX_FILE)
 
 from fastapi.middleware.cors import CORSMiddleware
 
