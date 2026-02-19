@@ -4,7 +4,7 @@ title: RAG PDF Chat — A Journey From Document to Answer
 hero_title: RAG PDF Chat
 hero_subtitle: From PDF Upload to Grounded LLM Responses
 hero_meta: Built with FastAPI · Chroma · HuggingFace · Docker
-hero_image: "/assets/hero.jpg"
+hero_image: "/rag_pdf_chat/assets/hero.jpg"
 ---
 
 # RAG PDF Chat — A Journey From Document to Answer
